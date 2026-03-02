@@ -1,11 +1,378 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>⋆˚🧸˚⋆  Galeria Infantil · 50 atividades  ⋆˚🧸˚⋆</title>
+    <style>
+        /* ===== FONTE MACIA E RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fdeff2 0%, #f8e8e8 100%);
+            font-family: 'Segoe UI', 'Comic Sans MS', 'Chalkboard SE', cursive, sans-serif;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* ===== CABEÇALHO MEIGUINHA ===== */
+        .cabecalho-galeria {
+            max-width: 1200px;
+            width: 100%;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .cabecalho-galeria h1 {
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+            color: #6b4f6b;
+            text-shadow: 4px 4px 0 #ffd9d9;
+            background: rgba(255, 255, 255, 0.6);
+            display: inline-block;
+            padding: 0.5rem 2rem 0.8rem 2rem;
+            border-radius: 60px 60px 30px 30px;
+            box-shadow: 0 8px 0 #e7b5b5;
+            backdrop-filter: blur(4px);
+            margin-bottom: 0.5rem;
+        }
+
+        .cabecalho-galeria p {
+            font-size: 1.4rem;
+            background: #ffe2d4;
+            color: #4a3b4a;
+            display: inline-block;
+            padding: 0.4rem 2rem;
+            border-radius: 40px;
+            box-shadow: 0 4px 0 #dbb7b7;
+            font-weight: 500;
+            border: 2px dashed white;
+        }
+
+        /* ===== GRADE 5x10 = 50 QUADRADOS ===== */
+        .grade-galeria {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);  /* 5 colunas */
+            gap: 1.2rem;
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 1rem;
+            background: rgba(255, 245, 240, 0.7);
+            border-radius: 68px 68px 48px 48px;
+            box-shadow: 0 20px 30px rgba(190, 130, 130, 0.2),
+                        0 0 0 8px #ffe5d9 inset;
+            backdrop-filter: blur(2px);
+        }
+
+        /* ===== CARTÃO DE ATIVIDADE (QUADRADO) ===== */
+        .cartao-atividade {
+            aspect-ratio: 1 / 1;               /* força quadrado perfeito */
+            background: #fffefc;
+            border-radius: 35% 20% 35% 20%;     /* formato de nuvem / brinquedo */
+            box-shadow: 0 10px 0 #eac0b5, 0 6px 15px rgba(140, 80, 80, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.7rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 4px solid white;
+            outline: 3px solid #ffc6b0;
+        }
+
+        /* brincadeira de passar mouse */
+        .cartao-atividade:hover {
+            transform: scale(1.02) rotate(-0.5deg);
+            box-shadow: 0 12px 0 #c99e9e, 0 12px 25px #dbb0b0;
+            background: #fffaf7;
+        }
+
+        /* ===== IMAGENS DENTRO DOS QUADRADOS ===== */
+        .cartao-atividade img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;           /* preenche sem esticar estranho */
+            border-radius: 25% 15% 25% 15%;
+            background: #fbdad0;          /* cor de fundo enquanto não carrega */
+            box-shadow: 0 4px 6px #c9a5a5;
+            border: 2px solid #ffeae3;
+            transition: filter 0.1s ease;
+            display: block;               /* remove espaçamento extra */
+        }
+
+        /* imagem "padrão" caso link fique offline – fica suave */
+        .cartao-atividade img[alt] {
+            filter: brightness(1.02);
+        }
+
+        /* ===== MENSAGEM QUENTINHA NO FIM ===== */
+        .rodape-fofura {
+            margin-top: 2.5rem;
+            font-size: 1.5rem;
+            background: #ffead2;
+            padding: 0.8rem 2.5rem;
+            border-radius: 100px;
+            color: #624e62;
+            font-weight: 600;
+            border: 4px dotted #ffbb99;
+            box-shadow: 0 6px 0 #c9b2b2;
+            text-align: center;
+        }
+
+        .rodape-fofura span {
+            font-size: 2rem;
+            display: inline-block;
+            filter: drop-shadow(2px 4px 4px rgba(0,0,0,0.1));
+        }
+
+        /* adaptação para telas menores (vira 4 colunas, depois 2) */
+        @media (max-width: 750px) {
+            .grade-galeria {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1rem;
+            }
+            .cabecalho-galeria h1 { font-size: 2rem; }
+        }
+
+        @media (max-width: 500px) {
+            .grade-galeria {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .cabecalho-galeria h1 { font-size: 1.8rem; }
+        }
+
+        /* p.s.: cada img possui link público de atividade infantil (ilustrativo) */
+    </style>
 </head>
 <body>
-    Eu não sei o que estou fazendo!!
+
+<div class="cabecalho-galeria">
+    <h1>🧚‍♀️  atividade das criancinhas  🧁</h1>
+    <p>50 quadrinhos · cada um uma brincadeira</p>
+</div>
+
+<!-- grade 5x10 = 50 imagens de atividades infantis -->
+<div class="grade-galeria">
+
+    <!-- 1 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2016/12/13/00/13/rabbit-1903016_640.png" alt="coelho lendo livro">
+    </div>
+    <!-- 2 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/01/16/15/17/crayons-1984054_640.png" alt="giz de cera coloridos">
+    </div>
+    <!-- 3 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2014/04/02/14/11/lego-306860_640.png" alt="blocos lego montados">
+    </div>
+    <!-- 4 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/09/17/02/02/png-2757379_640.png" alt="criança pintando cavalete">
+    </div>
+    <!-- 5 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/01/31/16/14/children-2024770_640.png" alt="crianças com massinha">
+    </div>
+    <!-- 6 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/08/30/17/26/child-2698038_640.png" alt="menino com quebra-cabeça">
+    </div>
+    <!-- 7 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/09/11/19/23/child-2740716_640.png" alt="criança desenhando sol">
+    </div>
+    <!-- 8 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2016/03/31/20/40/child-1295832_640.png" alt="criança com balde e pá">
+    </div>
+    <!-- 9 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2014/04/03/10/43/children-311216_640.png" alt="crianças brincando de roda">
+    </div>
+    <!-- 10 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2020/06/08/16/17/child-5275526_640.png" alt="criança com bolhas de sabão">
+    </div>
+
+    <!-- 11 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/02/07/16/47/child-2046540_640.png" alt="criança subindo em árvore">
+    </div>
+    <!-- 12 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/08/06/06/37/people-2589144_640.png" alt="crianças brincando de esconde-esconde">
+    </div>
+    <!-- 13 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/01/18/16/46/child-1990343_640.png" alt="menino jogando bola">
+    </div>
+    <!-- 14 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2016/09/08/18/23/kids-1654935_640.png" alt="crianças dançando">
+    </div>
+    <!-- 15 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/08/11/17/52/children-2632215_640.png" alt="crianças fantasiadas">
+    </div>
+    <!-- 16 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2013/07/13/12/08/child-159419_640.png" alt="criança tocando tambor">
+    </div>
+    <!-- 17 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2016/03/31/23/16/child-1297372_640.png" alt="menina lendo história">
+    </div>
+    <!-- 18 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2016/03/31/20/34/child-1295669_640.png" alt="crianças brincando de trenzinho">
+    </div>
+    <!-- 19 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/01/13/04/56/teddy-bear-1976588_640.png" alt="ursinho de pelúcia">
+    </div>
+    <!-- 20 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/02/13/23/51/child-2064125_640.png" alt="criança brincando de casinha">
+    </div>
+
+    <!-- 21 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2016/04/01/12/19/child-1300603_640.png" alt="criança com fantoche">
+    </div>
+    <!-- 22 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2014/04/03/10/23/children-310093_640.png" alt="crianças amarelinha">
+    </div>
+    <!-- 23 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/01/18/23/31/child-1991109_640.png" alt="menino com pipa">
+    </div>
+    <!-- 24 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2016/03/31/19/28/child-1294966_640.png" alt="criança jogando peteca">
+    </div>
+    <!-- 25 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/08/07/07/50/children-2601914_640.png" alt="crianças brincando de pega-pega">
+    </div>
+    <!-- 26 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/09/21/19/17/child-2772986_640.png" alt="criança com balanço">
+    </div>
+    <!-- 27 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/01/06/19/15/child-1958688_640.png" alt="criança escorregando">
+    </div>
+    <!-- 28 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2016/03/31/19/14/child-1294750_640.png" alt="criança jogando basquete">
+    </div>
+    <!-- 29 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2016/09/08/18/22/children-1654930_640.png" alt="crianças brincando de corda">
+    </div>
+    <!-- 30 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2014/04/03/10/09/children-309984_640.png" alt="crianças brincando de circo">
+    </div>
+
+    <!-- 31 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/01/17/19/04/child-1987936_640.png" alt="menina com tablet infantil">
+    </div>
+    <!-- 32 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/09/21/19/15/child-2772982_640.png" alt="criança com cavalinho de pau">
+    </div>
+    <!-- 33 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2016/03/31/20/57/child-1296142_640.png" alt="crianças pintando o rosto">
+    </div>
+    <!-- 34 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2016/09/08/17/58/child-1654756_640.png" alt="criança brincando de massinha">
+    </div>
+    <!-- 35 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/09/21/19/15/child-2772980_640.png" alt="criança brincando de carrinho">
+    </div>
+    <!-- 36 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2016/03/31/23/00/child-1297032_640.png" alt="crianças com instrumentos">
+    </div>
+    <!-- 37 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/08/07/07/49/child-2601912_640.png" alt="criança com bola de futebol">
+    </div>
+    <!-- 38 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/09/21/19/15/child-2772981_640.png" alt="criança com bicicleta">
+    </div>
+    <!-- 39 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2016/04/01/09/42/child-1300023_640.png" alt="criança brincando de esconde-esconde">
+    </div>
+    <!-- 40 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2016/03/31/18/27/child-1294286_640.png" alt="criança brincando de pula-pula">
+    </div>
+
+    <!-- 41 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/08/07/07/49/children-2601909_640.png" alt="crianças brincando de gangorra">
+    </div>
+    <!-- 42 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/09/21/19/13/child-2772976_640.png" alt="menino com carrinho de rolimã">
+    </div>
+    <!-- 43 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2016/03/31/18/17/child-1294221_640.png" alt="criança brincando de aviãozinho">
+    </div>
+    <!-- 44 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/08/07/07/49/children-2601910_640.png" alt="crianças no escorregador">
+    </div>
+    <!-- 45 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/08/07/07/47/children-2601907_640.png" alt="crianças brincando de areia">
+    </div>
+    <!-- 46 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2016/03/31/19/28/child-1294959_640.png" alt="criança brincando de bola">
+    </div>
+    <!-- 47 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/08/07/07/49/children-2601911_640.png" alt="crianças brincando de balanço">
+    </div>
+    <!-- 48 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2016/09/08/18/23/kids-1654933_640.png" alt="crianças com fantoches">
+    </div>
+    <!-- 49 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2016/04/01/11/24/child-1300572_640.png" alt="criança brincando de mímica">
+    </div>
+    <!-- 50 -->
+    <div class="cartao-atividade">
+        <img src="https://cdn.pixabay.com/photo/2017/09/21/19/15/child-2772985_640.png" alt="criança brincando de roda">
+    </div>
+
+    <!-- fim dos 50 quadrinhos fofos -->
+</div>
+
+<div class="rodape-fofura">
+    <span>🧸</span>  50 cantinhos de diversão  <span>🖍️</span>
+</div>
+
+<!-- crédito carinhoso: todas as imagens são de domínio público (Pixabay) ilustrando atividades -->
 </body>
 </html>
